@@ -1,0 +1,41 @@
+## Audio Features Extraction and Storage
+This script demonstrates how to connect to a MongoDB database, read data from a CSV file, extract features, and store them in the database using Python, Pandas, and PyMongo.
+
+## Requirements
+Python 3.x
+Pandas
+PyMongo
+MongoDB
+Installation
+
+## Install the required Python packages:
+pip install pandas pymongo
+## Usage
+Make sure your MongoDB server is running on localhost and listening on port 27017.
+Modify the script with your MongoDB database details and the path to your CSV file:
+
+## MongoDB connection details:
+client_new = MongoClient('localhost', 27017)
+db_new = client_new['new_audio_features']
+collection_new = db_new['song_data']
+
+## Path to the CSV file:
+csv_file = r'E:\raw_tracks.csv'
+## Run the script:
+python audio_features_extraction.py
+The script will read the CSV file, extract features, and store them in the specified MongoDB collection.
+
+## CSV File Format:
+The CSV file should have columns named track_id, artist_name, and track_genres. The track_genres column should contain a string representation of a list of dictionaries with genre information.
+
+## Example CSV file snippet:
+track_id,artist_name,track_genres
+1,Artist A,"[{'genre_title': 'Pop'}, {'genre_title': 'Rock'}]"
+2,Artist B,"[{'genre_title': 'Hip Hop'}, {'genre_title': 'Rap'}]"
+
+## Script Explanation
+Connects to the MongoDB database specified.
+Reads data from the CSV file using Pandas.
+Extracts genre titles from the track_genres column.
+Creates a dictionary of features for each row.
+Stores the features in the MongoDB collection.
